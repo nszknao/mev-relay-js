@@ -42,7 +42,7 @@ if (process.argv[2]) {
   MINERS = _.split(process.argv[2], ',')
 }
 
-const SIMULATION_RPC = process.argv[3]
+const SIMULATION_RPC = process.argv[3] ?? process.env.SIMULATION_RPC
 if (!SIMULATION_RPC) {
   console.error('invalid simulation rpc provided')
   help()
@@ -50,11 +50,6 @@ if (!SIMULATION_RPC) {
 }
 
 const SQS_URL = process.argv[4]
-if (!SIMULATION_RPC) {
-  console.error('invalid simulation rpc provided')
-  help()
-  process.exit(1)
-}
 
 const PORT = parseInt(_.get(process.argv, '[5]', '18545'))
 

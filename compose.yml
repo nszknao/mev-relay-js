@@ -1,0 +1,13 @@
+services:
+  server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 18545:18545
+      - 9090:9090
+    environment:
+      - SIMULATION_RPC=http://localhost:8545/
+    volumes:
+      - ./:/app:cached
+      - /app/node_modules
